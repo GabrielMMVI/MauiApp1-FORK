@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Pages.ApiPage"
+             Title="Estados (IBGE)">
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,Auto,*" Padding="10" RowSpacing="8">
+            
+            <!-- Cabeçalho com botão de atualizar -->
+<StackLayout Orientation="Horizontal" Spacing="8" Grid.Row="0">
+    <Label Text="Estados (IBGE)" FontSize="20" VerticalOptions="Center" />
+    <!-- Botão que chama a requisição HTTP -->
+    <Button Text="Buscar IBGE" Clicked="RefreshButton_Clicked" HorizontalOptions="EndAndExpand"/>
+    <Button Text="Minha UF" Clicked="MinhaUFButton_Clicked"/>
+            </StackLayout>
+
+            <!-- Indicador e mensagem de erro -->
+            <StackLayout Orientation="Horizontal" Grid.Row="1" Spacing="8">
+                <ActivityIndicator x:Name="loadingIndicator" IsRunning="False" IsVisible="False" VerticalOptions="Center"/>
+                <Label x:Name="errorLabel" TextColor="Tomato" IsVisible="False" VerticalOptions="Center"/>
+            </StackLayout>
+
+            <!-- Lista de resultados -->
+            <CollectionView x:Name="itemsView"
+                            Grid.Row="2"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="4" Padding="10" CornerRadius="8" HasShadow="True">
+                            <StackLayout>
+                                <!-- Title -->
+                                <Label Text="{Binding nome}" FontAttributes="Bold" FontSize="16" />
+                                <!-- Field -->
+                                <Label Text="{Binding sigla}" FontSize="13" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

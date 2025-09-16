@@ -1,0 +1,49 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Pages.ListaPage"
+             Title="Lista de itens">
+
+    <ContentPage.Content>
+        
+        <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="10" RowSpacing="8">
+            <Button Text="Ver Estados (IBGE)" 
+        Clicked="AbrirApiPage_Clicked"
+        Grid.Row="0"
+        HorizontalOptions="FillAndExpand" />
+
+ 
+            <!-- Barra de busca -->
+            <SearchBar x:Name="searchBar"
+                       Placeholder="Pesquisar..."
+                       TextChanged="SearchBar_TextChanged"
+                       Grid.Row="1"/>
+
+            <!-- contador -->
+            <Label x:Name="countLabel"
+                   Text="0 itens"
+                   FontSize="12"
+                   HorizontalOptions="Start"
+                   Grid.Row="2"/>
+
+            <!-- Lista (já tem scroll automático) -->
+            <CollectionView x:Name="itemsView"
+                            Grid.Row="3"
+                            SelectionMode="Single"
+                            SelectionChanged="ItemsView_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="4" Padding="10" CornerRadius="8" HasShadow="True">
+                            <StackLayout>
+                                <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding Subtitle}" FontSize="12"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+
+
+
