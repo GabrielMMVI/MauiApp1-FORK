@@ -4,14 +4,13 @@
              Title="Lista de itens">
 
     <ContentPage.Content>
-        
         <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="10" RowSpacing="8">
             <Button Text="Ver Estados (IBGE)" 
-        Clicked="AbrirApiPage_Clicked"
-        Grid.Row="0"
-        HorizontalOptions="FillAndExpand" />
+                    Clicked="AbrirApiPage_Clicked"
+                    Grid.Row="0"
+                    HorizontalOptions="FillAndExpand" />
 
- 
+
             <!-- Barra de busca -->
             <SearchBar x:Name="searchBar"
                        Placeholder="Pesquisar..."
@@ -41,9 +40,25 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <!-- Botão flutuante no canto inferior direito -->
+            <Button x:Name="fabButton"
+                    Text="Tema"
+                    Clicked="ToggleTheme_Clicked"
+                    BackgroundColor="{DynamicResource Primary}"
+                    TextColor="White"
+                    CornerRadius="28"
+                    WidthRequest="56"
+                    HeightRequest="56"
+                    FontSize="14"
+                    VerticalOptions="End"
+                    HorizontalOptions="End"
+                    Margin="16"
+                    Grid.Row="3"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
+
 
 
 

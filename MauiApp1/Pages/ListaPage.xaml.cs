@@ -141,7 +141,17 @@ namespace MauiApp1.Pages
             // limpa seleção para permitir re-seleção
             ((CollectionView)sender).SelectedItem = null;
         }
-       
+
+        private void ToggleTheme_Clicked(object sender, EventArgs e)
+        {
+            // Alterna entre Light e Dark Theme
+            var current = Application.Current.UserAppTheme;
+            if (current == AppTheme.Dark)
+                Application.Current.UserAppTheme = AppTheme.Light;
+            else
+                Application.Current.UserAppTheme = AppTheme.Dark;
+        }
+
     }
 }
 
